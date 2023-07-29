@@ -1,12 +1,24 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+{{#each releases}}
+  {{#if href}}
+    ## [{{title}}]({{href}}){{#if tag}} ({{isoDate}}){{/if}}
+  {{else}}
+    ## {{title}}{{#if tag}} ({{isoDate}}){{/if}}
+  {{/if}}
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+  {{#if summary}}
+    {{summary}}
+  {{/if}}
 
-## [Unreleased]
+  {{#each merges}}
+    - {{message}} {{#if href}}[`#{{id}}`]({{href}}){{/if}}
+  {{/each}}
+  {{#each fixes}}
+    - {{commit.subject}}{{#each fixes}} {{#if href}}[`#{{id}}`]({{href}}){{/if}}{{/each}}
+  {{/each}}
+  {{#each commits}}
+    - {{#if breaking}}**Breaking change:** {{/if}}{{subject}} {{#if href}}[`{{shorthash}}`]({{href}}){{/if}}
+  {{/each}}
 
-### Added
-
-- Changelog
+{{/each}}
