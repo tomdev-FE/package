@@ -31,5 +31,6 @@
     "twin": {
       "preset": "styled-components"
     }
-  }
+  },
+  "version": "0.0.0"
 }
